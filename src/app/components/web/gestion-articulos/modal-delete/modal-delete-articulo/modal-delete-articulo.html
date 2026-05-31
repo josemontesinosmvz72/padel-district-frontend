@@ -1,0 +1,24 @@
+<div class="fixed inset-0 z-[10050] flex items-center justify-center p-4 bg-black/55" (click)="cancel()">
+    <div class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6" (click)="$event.stopPropagation()">
+        <div class="flex items-center gap-4">
+            <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-red-100">
+                <i class="fas fa-trash text-red-600 text-xl"></i>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900">Eliminar artículo</h3>
+                <p class="text-sm text-gray-500 mt-1">¿Estás seguro de que deseas eliminar este artículo? Esta acción no
+                    se puede deshacer.</p>
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button (click)="cancel()"
+                class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition-colors">
+                Cancelar
+            </button>
+            <button (click)="delete()"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors">
+                <i class="fas fa-trash mr-2"></i> Eliminar
+            </button>
+        </div>
+    </div>
+</div>

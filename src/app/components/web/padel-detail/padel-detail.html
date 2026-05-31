@@ -1,0 +1,68 @@
+<div class="container my-5 py-4">
+  @if (pala) {
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
+      <li class="breadcrumb-item">
+        <a class="link-body-emphasis" routerLink="/inicio">
+          <i class="bi bi-house-door-fill fs-6" aria-hidden="true"></i>
+          <span class="visually-hidden">Inicio</span>
+        </a>
+      </li>
+      <li class="breadcrumb-item">
+        <a class="link-body-emphasis fw-semibold text-decoration-none text-capitalize"
+          [routerLink]="['/categoria', pala.categoria]">{{ pala.categoria }}</a>
+      </li>
+      <li class="breadcrumb-item active text-capitalize" aria-current="page">
+        {{ pala.nombre }}
+      </li>
+    </ol>
+  </nav>
+  }
+
+  <div class="row g-4">
+    <div class="col-12 col-md-5 col-lg-4">
+      <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <img [src]="pala.imagen" [alt]="pala.nombre" class="card-img-top object-fit-cover ratio ratio-1x1" />
+      </div>
+    </div>
+
+    <div class="col-12 col-md-7 col-lg-8">
+      <div class="card border-0 shadow-sm rounded-4 h-100">
+        <div class="card-body p-4">
+          <span class="badge bg-dark mb-2 text-capitalize">{{ pala.categoria }}</span>
+          @if (pala.subcategoria) {
+          <span class="badge bg-light text-dark ms-1 text-capitalize">{{ pala.subcategoria }}</span>
+          }
+
+          <h1 class="h3 fw-bold mb-2">{{ pala.nombre }}</h1>
+          <p class="text-muted mb-3">{{ pala.marca }}</p>
+
+          <div class="display-6 fw-bold text-success mb-4">{{ pala.precio | currency:'EUR' }}</div>
+
+          <p class="text-body mb-4">{{ pala.descripcion }}</p>
+
+          <div class="border-top pt-3 mb-4">
+            <h6 class="fw-semibold mb-3">Características</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2"><span class="text-muted">Color:</span> {{ pala.color }}</li>
+              @if (pala.peso) {
+              <li class="mb-2"><span class="text-muted">Peso:</span> {{ pala.peso }}</li>
+              }
+              @if (pala.talla) {
+              <li class="mb-2"><span class="text-muted">Talla:</span> {{ pala.talla }}</li>
+              }
+              <li class="mb-2"><span class="text-muted">Stock:</span> {{ pala.stock }} unidades</li>
+            </ul>
+          </div>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <button type="button" class="btn btn-carrito rounded-pill px-4" (click)="addToCart(pala)">Añadir al
+              carrito</button>
+            <button type="button" class="btn btn-outline-dark btn-volver rounded-pill px-4"
+              routerLink="/categoria/palas">Volver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

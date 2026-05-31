@@ -1,0 +1,59 @@
+<nav class="navbar">
+    <div class="logo-row" routerLink="/inicio">
+      <div class="logo">PÁDEL <span>DISTRICT</span></div>
+    </div>
+  
+    <div class="nav-bottom">
+      <ul class="nav-links">
+        <li><a [routerLink]="['/categoria', 'palas']">Palas Pádel</a></li>
+        <li><a [routerLink]="['/subcategoria', 'camisetas']">Camisetas</a></li>
+        <li><a [routerLink]="['/categoria', 'mochilas']">Paleteros</a></li>
+        <li><a [routerLink]="['/categoria', 'calzado']">Zapatillas</a></li>
+        <li><a [routerLink]="['/categoria', 'accesorios']">Accesorios</a></li>
+        <li><a [routerLink]="['/reservas-pistas']">Reserva una pista</a></li>
+        <li><a [routerLink]="['/gestion-articulos']">Gestionar artículos</a></li>
+        <li class="nav-search-item">
+          <input
+            type="text"
+            class="nav-search-input"
+            placeholder="Pala, camiseta..."
+            [value]="searchTerm()"
+            (input)="onSearchInput($event)"
+          />
+        </li>
+      </ul>
+      <div class="nav-actions">
+        @if (authService.isAuthenticated()) {
+          <div
+            class="nav-icon-link"
+            role="button"
+            tabindex="0"
+            title="Cerrar sesión"
+            (click)="logout()"
+            (keydown.enter)="logout()"
+            (keydown.space)="$event.preventDefault(); logout()"
+          >
+            <i class="bi bi-box-arrow-right"></i>
+            <span class="nav-action-label text-sm">Cerrar sesión</span>
+          </div>
+        } @else {
+          <button
+            type="button"
+            class="nav-icon-link nav-icon-button"
+            title="Iniciar sesión"
+            (click)="openLoginModal()"
+          >
+            <i class="bi bi-box-arrow-in-right"></i>
+          </button>
+        }
+        <div class="cart-container" routerLink="/cart-list">
+          <i class="bi bi-cart-fill"></i>
+          <span class="badge rounded-pill bg-danger cart-badge">
+            {{ cartItemsTotal() }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="content-gap"></div>

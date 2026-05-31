@@ -1,0 +1,62 @@
+<div class="min-h-screen bg-white">
+  <div class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 -z-10"></div>
+    <div class="absolute top-0 -left-4 w-72 h-72 bg-red-100 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob"></div>
+    <div class="absolute top-0 -right-4 w-72 h-72 bg-gray-200 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob animation-delay-2000"></div>
+    <div class="absolute -bottom-8 left-20 w-72 h-72 bg-red-50 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob animation-delay-4000"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center lg:pt-32">
+      
+
+      <h1 class="text-5xl md:text-7xl font-black tracking-tight text-gray-900 mb-6 uppercase">
+        ¡Hola, <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ff1e00] to-black">{{ usuario.username }}</span>!
+      </h1>
+      <p class="max-w-2xl mx-auto text-xl text-gray-600 mb-10 font-medium">
+        Bienvenido de nuevo a tu panel de <span class="text-[#ff1e00] font-bold">Padel District</span>. Gestiona tus pedidos, revisa tus reservas y prepárate para el próximo partido.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a routerLink="/inicio" class="px-8 py-4 bg-[#ff1e00] text-white font-black rounded-full shadow-lg hover:bg-black transition-all transform hover:scale-105 uppercase tracking-wider">
+          Ir a la Tienda
+        </a>
+        <a routerLink="/reservas-pistas" class="px-8 py-4 bg-white text-black font-black rounded-full shadow-md border-2 border-gray-100 hover:border-[#ff1e00] transition-all transform hover:scale-105 uppercase tracking-wider">
+          Mis Reservas
+        </a>
+        <a routerLink="/gestion-articulos" class="px-8 py-4 bg-black text-white font-black rounded-full shadow-lg hover:bg-[#ff1e00] transition-all transform hover:scale-105 uppercase tracking-wider">
+          Gestionar Artículos
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100 hover:shadow-xl hover:border-red-100 transition-all group">
+          <div class="w-14 h-14 bg-red-50 text-[#ff1e00] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#ff1e00] group-hover:text-white transition-colors">
+            <i class="fas fa-shopping-bag text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-black text-gray-900 mb-4 uppercase tracking-tight">Tus Pedidos</h3>
+          <p class="text-gray-600 leading-relaxed">Sigue el estado de tus compras de palas, calzado y accesorios de las mejores marcas.</p>
+        </div>
+
+
+        <div class="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100 hover:shadow-xl hover:border-red-100 transition-all group">
+          <div class="w-14 h-14 bg-red-50 text-[#ff1e00] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#ff1e00] group-hover:text-white transition-colors">
+            <i class="fas fa-calendar-check text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-black text-gray-900 mb-4 uppercase tracking-tight">Próximos Partidos</h3>
+          <p class="text-gray-600 leading-relaxed">Consulta tus reservas de pista y asegúrate de tener todo listo para saltar a la arena.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100 hover:shadow-xl hover:border-red-100 transition-all group">
+          <div class="w-14 h-14 bg-red-50 text-[#ff1e00] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#ff1e00] group-hover:text-white transition-colors">
+            <i class="fas fa-medal text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-black text-gray-900 mb-4 uppercase tracking-tight">Nivel District</h3>
+          <p class="text-gray-600 leading-relaxed">Mejora tu ranking en la comunidad y participa en torneos exclusivos para tu nivel.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

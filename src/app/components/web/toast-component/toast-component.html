@@ -1,0 +1,42 @@
+@if (toast.visible()) {
+  <div class="fixed top-0 left-0 right-0 z-[99999] flex justify-center pt-4 px-4 pointer-events-none">
+    @if (toast.action(); as action) {
+      <div class="pointer-events-auto w-full max-w-xl bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl shadow-2xl border border-green-400/30 transition-all duration-300">
+        <div class="flex items-center gap-3 px-5 py-4">
+          <i class="bi bi-check-circle-fill text-2xl shrink-0 drop-shadow-lg"></i>
+          <span class="flex-1 text-base font-semibold truncate">{{ toast.message() }}</span>
+          <a [routerLink]="['/cart-list']" (click)="toast.hide()"
+             class="shrink-0 bg-white text-green-700 px-5 py-1.5 rounded-full text-sm font-bold
+              hover:bg-green-50 hover:shadow-lg transition-all whitespace-nowrap">
+            {{ action.label }}
+          </a>
+          <button (click)="toast.hide()" class="text-white/70 hover:text-white transition-colors shrink-0 p-1
+           hover:bg-black/10 rounded-full" aria-label="Cerrar">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+      </div>
+    } @else if (toast.type() === 'success') {
+      <div class="pointer-events-auto w-full max-w-xl bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl shadow-2xl border border-green-400/30 transition-all duration-300">
+        <div class="flex items-center gap-3 px-5 py-4">
+          <i class="bi bi-check-circle-fill text-2xl shrink-0 drop-shadow-lg"></i>
+          <span class="flex-1 text-base font-semibold truncate">{{ toast.message() }}</span>
+          <button (click)="toast.hide()" class="text-white/70 hover:text-white transition-colors shrink-0 p-1 hover:bg-black/10 rounded-full ml-auto" aria-label="Cerrar">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+      </div>
+    } @else {
+      <div class="pointer-events-auto w-full max-w-xl bg-gradient-to-r from-red-600 to-red-500
+       text-white rounded-xl shadow-2xl border border-red-400/30 transition-all duration-300">
+        <div class="flex items-center gap-3 px-5 py-4">
+          <i class="bi bi-exclamation-circle text-2xl shrink-0 drop-shadow-lg"></i>
+          <span class="flex-1 text-base font-semibold truncate">{{ toast.message() }}</span>
+          <button (click)="toast.hide()" class="text-white/70 hover:text-white transition-colors shrink-0 p-1 hover:bg-black/10 rounded-full ml-auto" aria-label="Cerrar">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+}

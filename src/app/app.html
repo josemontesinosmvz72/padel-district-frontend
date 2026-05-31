@@ -1,0 +1,74 @@
+<app-toast/>
+<div class="container-fluid p-0 d-flex flex-column min-vh-100">
+  @if (authService.isAuthenticated()) {
+    <app-navbar-logged/>
+  } @else {
+    <app-navbar/>
+  }
+  <main class="flex-grow-1 d-flex flex-column">
+    <router-outlet/>
+  </main>
+  <app-footer/>
+</div>
+
+@if (loginModal.isOpen()) {
+  <div
+    class="login-modal-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="login-page-title"
+  >
+    <div class="login-modal-panel">
+      <button
+        type="button"
+        class="login-modal-dismiss"
+        (click)="loginModal.close()"
+        aria-label="Cerrar ventana de inicio de sesión"
+      >
+        ×
+      </button>
+      <app-login-component (authenticated)="loginModal.close()" />
+    </div>
+  </div>
+}
+
+@if (registerModal.isOpen()) {
+  <div
+    class="login-modal-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="register-page-title"
+  >
+    <div class="login-modal-panel">
+      <button
+        type="button"
+        class="login-modal-dismiss"
+        (click)="registerModal.close()"
+        aria-label="Cerrar ventana de registro"
+      >
+        ×
+      </button>
+      <app-register-component (authenticated)="registerModal.close()" />
+    </div>
+  </div>
+}
+
+@if (createArticuloModal.isOpen()) {
+  <div
+    class="login-modal-backdrop"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div class="login-modal-panel">
+      <button
+        type="button"
+        class="login-modal-dismiss"
+        (click)="createArticuloModal.close()"
+        aria-label="Cerrar ventana"
+      >
+        ×
+      </button>
+      <app-articulo-form (saved)="createArticuloModal.close()" />
+    </div>
+  </div>
+}

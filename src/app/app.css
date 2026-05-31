@@ -1,0 +1,139 @@
+.login-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.55);
+  box-sizing: border-box;
+}
+
+.login-modal-panel {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: min(90vh, 900px);
+  overflow-y: auto;
+  border-radius: 24px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+  background-color: #ffffff;
+}
+
+.login-modal-dismiss {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: transparent;
+  color: #111111;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.login-modal-dismiss:hover {
+  color: #ff1e00;
+}
+
+.login-modal-dismiss:hover {
+  background: rgba(255, 30, 0, 0.15);
+}
+
+.login-modal-panel .login-embed {
+  margin: 0;
+  padding: 0.75rem 0.75rem 1rem;
+  max-width: none;
+}
+
+.login-modal-panel .login-embed-inner {
+  border-radius: 12px;
+}
+
+.login-modal-backdrop.chatbot-modal-backdrop {
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0.65rem;
+  padding-bottom: calc(4.35rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(0, 0, 0, 0.38);
+}
+
+.login-modal-panel.chatbot-modal-panel {
+  width: min(320px, calc(100vw - 1.25rem));
+  max-width: none;
+  max-height: min(72dvh, 620px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.28),
+    0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.chatbot-modal-title {
+  margin: 0;
+  padding: 0.65rem 2.5rem 0.2rem 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  flex-shrink: 0;
+  letter-spacing: 0.01em;
+}
+
+.chatbot-modal-body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatbot-ion-fab {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 1030;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #f2f2f2;
+  background: #2e2e2e;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.chatbot-ion-fab:hover {
+  background: #3d3d3d;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+.chatbot-ion-fab:active {
+  transform: scale(0.96);
+}
+
+.chatbot-ion-fab:focus-visible {
+  outline: 2px solid #534ab7;
+  outline-offset: 3px;
+}
+
+.chatbot-ion-fab ion-icon {
+  width: 1.65rem;
+  height: 1.65rem;
+  pointer-events: none;
+}

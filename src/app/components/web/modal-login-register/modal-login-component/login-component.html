@@ -1,0 +1,64 @@
+<section class="login-embed mt-3" aria-labelledby="login-page-title">
+  <div class="login-embed-inner">
+    <div class="login-embed-header">
+      <h2 id="login-page-title" class="login-modal-title">Iniciar sesión</h2>
+      <p class="login-modal-tagline">Pádel District — tu equipo, a un click.</p>
+    </div>
+    <div class="login-modal-body login-embed-body ">
+      <div class="login-modal-intro">
+        <p id="login-page-desc" class="login-modal-lead">
+          Accede con tu correo y contraseña o
+          <a href="#" class="login-modal-lead-highlight login-modal-inline-link"
+            (click)="openRegisterModal($event)">regístrate</a> para comprar y disfrutar de nuestros productos.
+        </p>
+        <ul class="login-modal-benefits">
+          <li>Compras más ágiles con tus datos guardados</li>
+          <li>Acceso a reservas de pistas</li>
+          <li>Sesión segura en todos los dispositivos</li>
+          <li>Ofertas y novedades pensadas para jugadores</li>
+        </ul>
+        <p class="login-modal-footnote">
+          ¿Primera vez aquí? Crea tu cuenta en un momento y empieza a explorar palas, ropa y accesorios.
+        </p>
+      </div>
+
+      <form [formGroup]="formUser" class="login-modal-form" (ngSubmit)="login()">
+        <div class="login-field">
+          <label class="login-field-label" for="email">
+            Dirección de email <span class="login-field-required" aria-hidden="true">*</span>
+          </label>
+          <input formControlName="email" type="email" class="login-field-control" required id="email"
+            placeholder="Dirección de email" autocomplete="email" />
+        </div>
+        <div class="login-field login-field-password">
+          <label class="login-field-label" for="password">
+            Contraseña <span class="login-field-required" aria-hidden="true">*</span>
+          </label>
+          <div class="login-field-input-wrap">
+            <input formControlName="password" class="login-field-control"
+              [type]="passwordVisible() ? 'text' : 'password'" required id="password" placeholder="Contraseña"
+              autocomplete="current-password" />
+            <button type="button" class="login-field-password-toggle" (click)="togglePasswordVisible()"
+              [attr.aria-pressed]="passwordVisible()"
+              [attr.aria-label]="passwordVisible() ? 'Ocultar contraseña' : 'Mostrar contraseña'">
+              <i class="bi" [class.bi-eye]="!passwordVisible()" [class.bi-eye-slash]="passwordVisible()"
+                aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+        <div class="login-modal-submit-row mb-4">
+          <button type="submit" class="btn button-login login-modal-submit">Iniciar sesión</button>
+        </div>
+        @if (errorMessage()) {
+          <div class="login-error" role="alert">{{ errorMessage() }}</div>
+        }
+      </form>
+      <div class="register-link text-sm mt-2">
+        <p>
+          ¿No tienes una cuenta?
+          <a href="#" class="register-link-text font-bold hover:text-red-500" (click)="openRegisterModal($event)">Regístrate</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

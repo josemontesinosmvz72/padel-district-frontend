@@ -1,0 +1,148 @@
+.listado-toolbar {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0;
+  margin-left: 0;
+  margin-bottom: 1rem;
+}
+
+.listado-toolbar .form-select {
+  border-color: #ced4da;
+}
+
+.listado-toolbar-select--orden {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.listado-toolbar-orden {
+  margin-left: auto;
+  width: 20%;
+}
+
+.listado-toolbar-select--mostrar {
+  width: auto;
+  min-width: 4.25rem;
+}
+
+.container {
+  max-width: 100%;
+}
+
+
+.banner-category {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 160px;
+  height: 28vh;
+  max-height: 320px;
+  background-color: #000000;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.banner-category-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+}
+
+.titulo-seccion {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.hover-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.hover-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-img-top {
+  object-fit: contain !important;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.hover-card:hover .card-img-top {
+  transform: scale(1.02);
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  font-family: inherit;
+}
+
+.hover-card .ratio {
+  min-height: 220px;
+}
+
+.hover-card .card-body {
+  padding: 1.25rem;
+}
+
+.listado-con-sidebar {
+  padding-left: 0 !important;
+  padding-right: 1.5rem;
+}
+
+.listado-sidebar-izq {
+  padding-left: 1.25rem;
+}
+
+@media (min-width: 992px) {
+  .listado-sidebar-izq {
+    padding-left: 2.5rem;
+  }
+}
+
+.cards-grid-categoria {
+  margin-left: 0;
+  margin-right: 0;
+  --bs-gutter-x: 4rem;
+  --bs-gutter-y: 3rem;
+}
+
+.precio-oferta {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.precio-original-tachado {
+  font-size: 0.8rem;
+  color: #6c757d;
+  text-decoration: line-through;
+}
+
+.precio-rebajado-actual {
+  font-size: 1rem;
+  margin-left: 1.5rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.btn-carrito {
+  background-color: #ff1e00;
+  border: none;
+  font-family: inherit;
+  transition: transform 0.2s;
+}
+
+.btn-carrito:hover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  transform: scale(1.05);
+}

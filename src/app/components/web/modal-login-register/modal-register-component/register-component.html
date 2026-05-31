@@ -1,0 +1,94 @@
+<section class="login-embed mt-3" aria-labelledby="register-page-title">
+  <div class="login-embed-inner">
+    <div class="login-embed-header">
+      <h2 id="register-page-title" class="login-modal-title">Crear cuenta</h2>
+      <p class="login-modal-tagline">Pádel District — únete en un minuto.</p>
+    </div>
+    <div class="login-embed-body">
+      <div class="login-modal-intro">
+        <p id="register-page-desc" class="login-modal-lead">
+          Muy rapido y aprovecha las opciones al pertenecer al club !
+        </p>
+      </div>
+
+      <form [formGroup]="formRegister" class="login-modal-form" (ngSubmit)="register()">
+        <div class="login-field">
+          <label class="login-field-label" for="reg-username">
+            Nombre de usuario <span class="login-field-required" aria-hidden="true">*</span>
+          </label>
+          <input
+            formControlName="username"
+            type="text"
+            class="login-field-control"
+            id="reg-username"
+            placeholder="Nombre de usuario"
+            autocomplete="username"
+          />
+        </div>
+        <div class="login-field">
+          <label class="login-field-label" for="reg-email">
+            Dirección de email <span class="login-field-required" aria-hidden="true">*</span>
+          </label>
+          <input
+            formControlName="email"
+            type="email"
+            class="login-field-control"
+            required
+            id="reg-email"
+            placeholder="Dirección de email"
+            autocomplete="email"
+          />
+        </div>
+        <div class="login-field">
+          <label class="login-field-label" for="reg-role">Tipo de cuenta</label>
+          <select formControlName="role" class="login-field-control" id="reg-role">
+            <option value="USER_ROLE">Usuario Estándar</option>
+            <option value="ADMIN_ROLE">Administrador</option>
+          </select>
+        </div>
+        <div class="login-field login-field-password">
+          <label class="login-field-label" for="reg-password">
+            Contraseña <span class="login-field-required" aria-hidden="true">*</span>
+          </label>
+          <div class="login-field-input-wrap">
+            <input
+              formControlName="password"
+              class="login-field-control"
+              [type]="passwordVisible() ? 'text' : 'password'"
+              required
+              id="reg-password"
+              placeholder="Contraseña"
+              autocomplete="new-password"
+            />
+            <button
+              type="button"
+              class="login-field-password-toggle"
+              (click)="togglePasswordVisible()"
+              [attr.aria-pressed]="passwordVisible()"
+              [attr.aria-label]="passwordVisible() ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+            >
+              <i
+                class="bi"
+                [class.bi-eye]="!passwordVisible()"
+                [class.bi-eye-slash]="passwordVisible()"
+                aria-hidden="true"
+              ></i>
+            </button>
+          </div>
+        </div>
+        <div class="login-modal-submit-row">
+          <button type="submit" class="btn button-login login-modal-submit">Registrarse</button>
+        </div>
+        @if (errorMessage()) {
+          <div class="login-error" role="alert">{{ errorMessage() }}</div>
+        }
+      </form>
+      <div class="register-link text-sm">
+        <p>
+          ¿Ya tienes cuenta?
+          <a href="#" class="register-link-text" (click)="openLoginModal($event)">Inicia sesión</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

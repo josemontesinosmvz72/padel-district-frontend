@@ -1,0 +1,79 @@
+<div class="banner-category">
+  <img src="/images/banner.jpg" alt="banner-category" class="banner-category-img">
+</div>
+<section class="articulos-categoria">
+  <div class="container-fluid py-4 listado-con-sidebar">
+    <div class="row g-4 align-items-start layout-filtros-cards">
+      <aside class="col-12 col-lg-3 listado-sidebar-izq">
+        <app-filtros-sidebar [articulos]="articulosList()" [categoria]="categoriaActual()"
+          [subcategoria]="subcategoriaActual()"
+          (filtroMarcasChange)="onFiltroMarcasChange($event)"
+          (filtroSubcategoriasChange)="onFiltroSubcategoriasChange($event)"
+          (filtroPesosChange)="onFiltroPesosChange($event)"
+          (filtroTallasChange)="onFiltroTallasChange($event)" />
+      </aside>
+      <div class="col-10 col-lg-9 listado-contenido-principal">
+        <div class=" container-fluix listado-toolbar px-0 py-3">
+          <div class="row align-items-center g-3 justify-content-end">
+            <div class="col-auto me-auto">
+              <span class="small fw-bold">{{ totalArticulos() }}</span><span class="small"> productos</span>
+            </div>
+          </div>
+        </div>
+
+        @if (cargando()) {
+        <div class="text-center py-5">
+          <div class="spinner-border text-dark" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+        </div>
+        }
+
+        @if (!cargando() && articulosList().length > 0 && articulosFiltrados().length === 0) {
+        <p class="text-muted mb-0">No hay productos para los filtros seleccionados.</p>
+        }
+
+        @if (articulosFiltrados().length > 0 && !cargando()) {
+        <div class="row g-4 cards-grid-categoria">
+          @for (articulo of articulosMostrados(); track articulo._id) {
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+            <div class="card shadow-sm border-0 rounded-4 w-100 hover-card">
+              <div class="ratio ratio-4x3" routerLink="/detalle/{{ articulo._id }}">
+                <img [src]="articulo.imagen" [alt]="articulo.nombre"
+                  class="card-img-top object-fit-cover rounded-top-4" />
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title mb-2" routerLink="/detalle/{{ articulo._id }}">{{ articulo.nombre }}</h5>
+                @if (articulo.marca) {
+                <p class="card-text small text-muted mb-1">{{ articulo.marca }}</p>
+                }
+                <div class="row mb-2 mt-auto">
+                  <div class="col-12 mb-2">
+                    @if (articulo.precioRebajado != null && articulo.precioRebajado > 0) {
+                    <div class="precio-oferta">
+                      <span class="precio-original-tachado">{{ articulo.precio | currency:'EUR' }}</span>
+                      <span class="precio-rebajado-actual">{{ articulo.precioRebajado | currency:'EUR' }}</span>
+                    </div>
+                    } @else if (articulo.precio != null) {
+                    <div class="fw-semibold text-dark">{{ articulo.precio | currency:'EUR' }}</div>
+                    }
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <button type="button" class="btn btn-carrito btn-sm rounded-pill text-white px-3 fw-bold"
+                      (click)="addToCart(articulo)">
+                      Añadir al carrito
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

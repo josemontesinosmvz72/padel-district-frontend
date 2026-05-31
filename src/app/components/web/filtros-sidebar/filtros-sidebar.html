@@ -1,0 +1,60 @@
+<div class="m-0 sticky top-4 rounded-4 p-3">
+  <div class="d-flex align-items-center gap-2 mb-3">
+    <i class="fa-solid fa-sliders text-base text-[#212529]" aria-hidden="true"></i>
+    <h5 class="mb-0">Filtros</h5>
+  </div>
+
+  <div class="mt-3 mb-2">
+    <label class="form-label mb-1">Marca:</label>
+    @for (marca of marcasDisponibles(); track marca) {
+      <div class="form-check form-check-sm">
+        <input type="checkbox" class="form-check-input filtro-checkbox" [id]="'marca-' + marca"
+          [checked]="isMarcaSeleccionada(marca)"
+          (change)="toggleMarca(marca)">
+        <label class="form-check-label" [for]="'marca-' + marca">{{ formatEtiqueta(marca) }}</label>
+      </div>
+    }
+  </div>
+
+  @if (mostrarFiltrosPalas()) {
+    <div class="mt-3 mb-2">
+      <label class="form-label mb-1">Forma:</label>
+      @for (subcategoria of subcategoriasDisponibles(); track subcategoria) {
+        <div class="form-check form-check-sm">
+          <input type="checkbox" class="form-check-input filtro-checkbox" [id]="'subcategoria-' + subcategoria"
+            [checked]="isSubcategoriaSeleccionada(subcategoria)"
+            (change)="toggleSubcategoria(subcategoria)">
+          <label class="form-check-label" [for]="'subcategoria-' + subcategoria">{{ formatEtiqueta(subcategoria) }}</label>
+        </div>
+      }
+    </div>
+
+    @if (pesosDisponibles().length > 0) {
+      <div class="mt-3 mb-2">
+        <label class="form-label mb-1">Peso:</label>
+        @for (peso of pesosDisponibles(); track peso) {
+          <div class="form-check form-check-sm">
+            <input type="checkbox" class="form-check-input filtro-checkbox" [id]="'peso-' + peso"
+              [checked]="isPesoSeleccionado(peso)"
+              (change)="togglePeso(peso)">
+            <label class="form-check-label" [for]="'peso-' + peso">{{ peso }}</label>
+          </div>
+        }
+      </div>
+    }
+  }
+
+  @if (mostrarFiltroTallas() && tallasDisponibles().length > 0) {
+    <div class="mt-3 mb-2">
+      <label class="form-label mb-1">Talla:</label>
+      @for (talla of tallasDisponibles(); track talla) {
+        <div class="form-check form-check-sm">
+          <input type="checkbox" class="form-check-input filtro-checkbox" [id]="'talla-' + talla"
+            [checked]="isTallaSeleccionada(talla)"
+            (change)="toggleTalla(talla)">
+          <label class="form-check-label" [for]="'talla-' + talla">{{ talla }}</label>
+        </div>
+      }
+    </div>
+  }
+</div>
