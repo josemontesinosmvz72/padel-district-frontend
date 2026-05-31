@@ -110,6 +110,7 @@ export class ArticuloFormComponent implements OnInit {
     }
 
     const articulo = this.formArticulo.getRawValue() as Articulo;
+    articulo.categoria = articulo.categoria.toLowerCase();
 
     if (this.editingArticulo?._id) {
       const payload: Articulo = { ...articulo, _id: this.editingArticulo._id } as Articulo;
