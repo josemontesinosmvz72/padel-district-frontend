@@ -1,15 +1,31 @@
 <nav class="navbar">
-  <div class="logo-row" routerLink="/inicio">
-    <div class="logo">PÁDEL <span>DISTRICT</span></div>
+  <div class="navbar-top">
+    <div class="logo-row" routerLink="/inicio">
+      <div class="logo">PÁDEL <span>DISTRICT</span></div>
+    </div>
+
+    <div class="navbar-top-right">
+      <div class="cart-container" routerLink="/cart-list">
+        <i class="bi bi-cart-fill" aria-hidden="true"></i>
+        <span class="badge bg-danger cart-badge">
+          {{ cartItemsTotal() }}
+        </span>
+      </div>
+      <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen()" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
 
-  <div class="nav-bottom">
+  <div class="nav-bottom" [class.nav-bottom--open]="menuOpen()">
     <ul class="nav-links">
-      <li><a [routerLink]="['/categoria', 'palas']">Palas Pádel</a></li>
-      <li><a [routerLink]="['/subcategoria', 'camisetas']">Camisetas</a></li>
-      <li><a [routerLink]="['/categoria', 'mochilas']">Paleteros</a></li>
-      <li><a [routerLink]="['/categoria', 'calzado']">Zapatillas</a></li>
-      <li><a [routerLink]="['/categoria', 'accesorios']">Accesorios</a></li>
+      <li><a [routerLink]="['/categoria', 'palas']" (click)="closeMenu()">Palas Pádel</a></li>
+      <li><a [routerLink]="['/subcategoria', 'camisetas']" (click)="closeMenu()">Camisetas</a></li>
+      <li><a [routerLink]="['/categoria', 'mochilas']" (click)="closeMenu()">Paleteros</a></li>
+      <li><a [routerLink]="['/categoria', 'calzado']" (click)="closeMenu()">Zapatillas</a></li>
+      <li><a [routerLink]="['/categoria', 'accesorios']" (click)="closeMenu()">Accesorios</a></li>
       <li class="nav-search-item">
         <input
           type="text"
@@ -27,9 +43,9 @@
           role="button"
           tabindex="0"
           title="Cerrar sesión"
-          (click)="logout()"
-          (keydown.enter)="logout()"
-          (keydown.space)="$event.preventDefault(); logout()"
+          (click)="logout(); closeMenu()"
+          (keydown.enter)="logout(); closeMenu()"
+          (keydown.space)="$event.preventDefault(); logout(); closeMenu()"
         >
           <span class="nav-action-label">Cerrar sesión</span>
         </div>
@@ -38,13 +54,13 @@
           type="button"
           class="nav-icon-link nav-icon-button"
           title="Iniciar sesión"
-          (click)="openLoginModal()"
+          (click)="openLoginModal(); closeMenu()"
         >
         <i class="fa-solid fa-user"></i>
           <span class="nav-action-label">Iniciar sesión</span>
         </button>
       }
-      <div class="cart-container" routerLink="/cart-list">
+      <div class="cart-container cart-desktop" routerLink="/cart-list">
         <i class="bi bi-cart-fill" aria-hidden="true"></i>
         <span class="badge bg-danger cart-badge">
           {{ cartItemsTotal() }}

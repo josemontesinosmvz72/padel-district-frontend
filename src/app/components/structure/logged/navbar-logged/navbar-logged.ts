@@ -18,6 +18,15 @@ export class NavbarLogged {
   readonly authService = inject(AuthService);
   cartItemsTotal = this.cartService.cartTotalItems;
   searchTerm: WritableSignal<string> = signal<string>('');
+  menuOpen = signal(false);
+
+  toggleMenu(): void {
+    this.menuOpen.update(v => !v);
+  }
+
+  closeMenu(): void {
+    this.menuOpen.set(false);
+  }
 
   onSearchInput(event: Event): void {
     const value = (event.target as HTMLInputElement).value;

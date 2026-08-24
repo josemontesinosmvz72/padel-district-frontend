@@ -1,59 +1,75 @@
 <nav class="navbar">
+  <div class="navbar-top">
     <div class="logo-row" routerLink="/inicio">
       <div class="logo">PÁDEL <span>DISTRICT</span></div>
     </div>
-  
-    <div class="nav-bottom">
-      <ul class="nav-links">
-        <li><a [routerLink]="['/categoria', 'palas']">Palas Pádel</a></li>
-        <li><a [routerLink]="['/subcategoria', 'camisetas']">Camisetas</a></li>
-        <li><a [routerLink]="['/categoria', 'mochilas']">Paleteros</a></li>
-        <li><a [routerLink]="['/categoria', 'calzado']">Zapatillas</a></li>
-        <li><a [routerLink]="['/categoria', 'accesorios']">Accesorios</a></li>
-        <li><a [routerLink]="['/reservas-pistas']">Reserva una pista</a></li>
-        <li><a [routerLink]="['/gestion-articulos']">Gestionar artículos</a></li>
-        <li class="nav-search-item">
-          <input
-            type="text"
-            class="nav-search-input"
-            placeholder="Pala, camiseta..."
-            [value]="searchTerm()"
-            (input)="onSearchInput($event)"
-          />
-        </li>
-      </ul>
-      <div class="nav-actions">
-        @if (authService.isAuthenticated()) {
-          <div
-            class="nav-icon-link"
-            role="button"
-            tabindex="0"
-            title="Cerrar sesión"
-            (click)="logout()"
-            (keydown.enter)="logout()"
-            (keydown.space)="$event.preventDefault(); logout()"
-          >
-            <i class="bi bi-box-arrow-right"></i>
-            <span class="nav-action-label text-sm">Cerrar sesión</span>
-          </div>
-        } @else {
-          <button
-            type="button"
-            class="nav-icon-link nav-icon-button"
-            title="Iniciar sesión"
-            (click)="openLoginModal()"
-          >
-            <i class="bi bi-box-arrow-in-right"></i>
-          </button>
-        }
-        <div class="cart-container" routerLink="/cart-list">
-          <i class="bi bi-cart-fill"></i>
-          <span class="badge rounded-pill bg-danger cart-badge">
-            {{ cartItemsTotal() }}
-          </span>
+
+    <div class="navbar-top-right">
+      <div class="cart-container" routerLink="/cart-list">
+        <i class="bi bi-cart-fill" aria-hidden="true"></i>
+        <span class="badge rounded-pill bg-danger cart-badge">
+          {{ cartItemsTotal() }}
+        </span>
+      </div>
+      <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen()" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-bottom" [class.nav-bottom--open]="menuOpen()">
+    <ul class="nav-links">
+      <li><a [routerLink]="['/categoria', 'palas']" (click)="closeMenu()">Palas Pádel</a></li>
+      <li><a [routerLink]="['/subcategoria', 'camisetas']" (click)="closeMenu()">Camisetas</a></li>
+      <li><a [routerLink]="['/categoria', 'mochilas']" (click)="closeMenu()">Paleteros</a></li>
+      <li><a [routerLink]="['/categoria', 'calzado']" (click)="closeMenu()">Zapatillas</a></li>
+      <li><a [routerLink]="['/categoria', 'accesorios']" (click)="closeMenu()">Accesorios</a></li>
+      <li><a [routerLink]="['/reservas-pistas']" (click)="closeMenu()">Reserva una pista</a></li>
+      <li><a [routerLink]="['/gestion-articulos']" (click)="closeMenu()">Gestionar artículos</a></li>
+      <li class="nav-search-item">
+        <input
+          type="text"
+          class="nav-search-input"
+          placeholder="Pala, camiseta..."
+          [value]="searchTerm()"
+          (input)="onSearchInput($event)"
+        />
+      </li>
+    </ul>
+    <div class="nav-actions">
+      @if (authService.isAuthenticated()) {
+        <div
+          class="nav-icon-link"
+          role="button"
+          tabindex="0"
+          title="Cerrar sesión"
+          (click)="logout(); closeMenu()"
+          (keydown.enter)="logout(); closeMenu()"
+          (keydown.space)="$event.preventDefault(); logout(); closeMenu()"
+        >
+          <i class="bi bi-box-arrow-right"></i>
+          <span class="nav-action-label text-sm">Cerrar sesión</span>
         </div>
+      } @else {
+        <button
+          type="button"
+          class="nav-icon-link nav-icon-button"
+          title="Iniciar sesión"
+          (click)="openLoginModal(); closeMenu()"
+        >
+          <i class="bi bi-box-arrow-in-right"></i>
+        </button>
+      }
+      <div class="cart-container cart-desktop" routerLink="/cart-list">
+        <i class="bi bi-cart-fill"></i>
+        <span class="badge rounded-pill bg-danger cart-badge">
+          {{ cartItemsTotal() }}
+        </span>
       </div>
     </div>
-  </nav>
-  
-  <div class="content-gap"></div>
+  </div>
+</nav>
+
+<div class="content-gap"></div>
