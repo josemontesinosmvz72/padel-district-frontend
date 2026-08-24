@@ -8,7 +8,7 @@ import { Router } from "@angular/router"; import { catchError, Observable, tap, 
 export class AuthService {
   private http = inject(HttpClient);
   private router = inject(Router);
-  private readonly baseUrl = 'https://padel-shop.onrender.com/api/v1/users';
+  private readonly baseUrl = 'https://padel-api-backend.vercel.app/api/v1/users';
 
   #user = signal<any>(null);
 

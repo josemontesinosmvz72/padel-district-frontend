@@ -9,7 +9,7 @@ import { Usuario } from '../common/interfaces';
 })
 
 export class UserService {
-  urlUser = 'https://padel-shop.onrender.com/api/v1/users';
+  urlUser = 'https://padel-api-backend.vercel.app/api/v1/users';
   token: string = '';
   usuario!: Usuario;
   private readonly loginModal = inject(LoginModalService);

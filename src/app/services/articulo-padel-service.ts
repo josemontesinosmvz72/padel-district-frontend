@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ArticuloPadelService {
   private readonly http: HttpClient = inject(HttpClient);
-  private readonly urlBase: string = 'https://padel-shop.onrender.com/api/v1/articulos';
+  private readonly urlBase: string = 'https://padel-api-backend.vercel.app/api/v1/articulos';
 
   getArticulosPaged(page: number, pageSize: number): Observable<ApiResponsePadel> {
     return this.http.get<ApiResponsePadel>(this.urlBase + '/paged?page=' + page + '&limit=' + pageSize);

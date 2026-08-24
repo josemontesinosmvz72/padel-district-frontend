@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class ReservaPistasService {
   private readonly http = inject(HttpClient);
-  private readonly urlBase = 'https://padel-shop.onrender.com/api/v1/reservas';
+  private readonly urlBase = 'https://padel-api-backend.vercel.app/api/v1/reservas';
 
   getPistas(): Observable<any> {
     return this.http.get<any>(this.urlBase + '/pistas');
